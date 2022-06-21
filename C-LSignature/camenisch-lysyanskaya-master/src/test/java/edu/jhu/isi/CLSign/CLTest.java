@@ -26,19 +26,19 @@ public class CLTest {
     final SecretKey sk = keyPair.getSk();
 
     // sign
-    final int messageSize = 5;
-    final KeyPair keyPair = CLSign.keyGen(messageSize);
+    //final int messageSize = 5;
+    //final KeyPair keyPair = CLSign.keyGen(messageSize);
     final List<ZrElement> messages = IntStream.range(0, messageSize)
             .mapToObj(i -> (ZrElement) keyPair.getPk().getPairing().getZr().newRandomElement().getImmutable())
             .collect(Collectors.toList());
     final Signature sigma = CLSign.sign(messages, keyPair);
 
     // verify
-    final int messageSize = 5;
-    final KeyPair keyPair = CLSign.keyGen(messageSize);
-    final List<ZrElement> messages = IntStream.range(0, messageSize)
+   // final int messageSize = 5;
+   // final KeyPair keyPair = CLSign.keyGen(messageSize);
+   // final List<ZrElement> messages = IntStream.range(0, messageSize)
             .mapToObj(i -> (ZrElement) keyPair.getPk().getPairing().getZr().newRandomElement().getImmutable())
             .collect(Collectors.toList());
-    final Signature sigma = CLSign.sign(messages, keyPair);
+    //final Signature sigma = CLSign.sign(messages, keyPair);
 
 }
