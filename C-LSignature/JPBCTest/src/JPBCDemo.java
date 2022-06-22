@@ -12,7 +12,7 @@ public class JPBCDemo {
     public static void main(String[] args){
         Pairing bp = PairingFactory.getPairing("a.properties");
         Field G1 = bp.getG1();
-        Field Zr = bp.getZr();
+        Field Zr = bp.getZr();//Zr - 有限域
         //使用getImmutable()会使得g后续不可变
         Element g = G1.newRandomElement().getImmutable();
         Element a = Zr.newRandomElement();
@@ -20,7 +20,7 @@ public class JPBCDemo {
         Element b = Zr.newRandomElement();
 
         Element g_a = g.duplicate().powZn(a);
-        //如果不用.duplicate()，则g会改变
+        //如果不用.duplicate()，则g会改变,使用getImmutable()也可以
         System.out.println(g);
         System.out.println(g_a);
         Element g_b = g.duplicate().powZn(b);
@@ -36,7 +36,8 @@ public class JPBCDemo {
         }else {
             System.out.println("NO");
         }
-        //自定义椭圆曲线参数
+
+
 
 
     }
