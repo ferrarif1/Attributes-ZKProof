@@ -137,7 +137,8 @@ public class AccessTree {
         nodes[4] = new Node(2);
         nodes[5] = new Node(3);
         nodes[6] = new Node(4);
-
+        //要共享的根节点的秘密值为10，将其分配给子节点
+        // 子节点只有各自的秘密值，联合起来可恢复根节点秘密
         nodes[0].secretShare = bp.getZr().newElement(10);
         nodeShare(nodes, nodes[0], bp);
         for (Node node:nodes){
@@ -156,6 +157,7 @@ public class AccessTree {
         }
 
         int[] AttList = {1, 2, 3, 5};
+        //根节点秘密成功恢复 则为true
         boolean res = nodeRecover(nodes, nodes[0], AttList, bp);
 
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++");

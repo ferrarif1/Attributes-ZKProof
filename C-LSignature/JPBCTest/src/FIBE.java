@@ -53,7 +53,7 @@ public class FIBE {
         Properties mskProp = loadPropFromFile(mskFileName);
         String yString = mskProp.getProperty("y");
         Element y = bp.getZr().newElementFromBytes(Base64.getDecoder().decode(yString)).getImmutable();
-
+        //  随机选多项式 根据属性值计算对应的多项式值，就得到一些点
         //d-1次多项式表示为q(x)=coef[0] + coef[1]*x^1 + coef[2]*x^2 + coef[d-1]*x^(d-1)
         //多项式的系数的数据类型为Zr Element，从而是的后续相关计算全部在Zr群上进行
         //通过随机选取coef参数，来构造d-1次多项式q(x)。约束条件为q(0)=y。
