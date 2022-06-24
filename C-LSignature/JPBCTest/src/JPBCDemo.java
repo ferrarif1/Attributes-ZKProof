@@ -10,6 +10,8 @@ import javax.tools.StandardJavaFileManager;
 
 public class JPBCDemo {
     public static void main(String[] args){
+        //在ABE中，一般设定G1域和G2域为相等的域，将G1域和G2域的元素映射到Gt域。
+        //主要使用的椭圆曲线为TypeA型素数阶椭圆曲线，y² = x³ + x 参数如下：
         Pairing bp = PairingFactory.getPairing("a.properties");
         Field G1 = bp.getG1();
         Field Zr = bp.getZr();//Zr - 有限域
