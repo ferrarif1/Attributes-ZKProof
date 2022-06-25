@@ -17,8 +17,25 @@ public class JPBCDemoGroup {
         //Pairing参数：rBit是Zp中阶数p的比特长度，如160 qBit是G中阶数的比特长度，如512
         Pairing bp = PairingFactory.getPairing("a.properties");
         Field G1 = bp.getG1();
+        Field G2 = bp.getG2();
         Field Zr = bp.getZr();//Zr - 有限域
         Field GT = bp.getGT();
+
+        String m = "message";
+        byte[] m_hash = Integer.toString(m.hashCode()).getBytes();
+        //将byte[] m_hash哈希到Z_p群
+        Element hash_Z_p = Zr.newElement().setFromHash(m_hash, 0, m_hash.length);
+        //将byte[] m_hash哈希到G_1群
+        Element hash_G_1 = G1.newElement().setFromHash(m_hash, 0, m_hash.length);
+        //将byte[] m_hash哈希到G_2群
+        Element hash_G_2 = G2.newElement().setFromHash(m_hash, 0, m_hash.length);
+        //将byte[] m_hash哈希到G_T群
+        Element hash_G_T = GT.newElement().setFromHash(m_hash, 0, m_hash.length);
+        out.println("hash_Z_p "+hash_Z_p);
+        out.println("hash_G_1 "+hash_G_1);
+        out.println("hash_G_2 "+hash_G_2);
+        out.println("hash_G_T "+hash_G_T);
+
 
         //测试Zr有限域的加法和乘法
         out.println("测试Zr有限域的加法和乘法");
