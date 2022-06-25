@@ -14,6 +14,7 @@ import static java.lang.System.out;
 
 public class JPBCDemoGroup {
     public static void main(String[] args){
+        //Pairing参数：rBit是Zp中阶数p的比特长度，如160 qBit是G中阶数的比特长度，如512
         Pairing bp = PairingFactory.getPairing("a.properties");
         Field G1 = bp.getG1();
         Field Zr = bp.getZr();//Zr - 有限域

@@ -24,24 +24,22 @@ Signature Schemes and Anonymous Credentialsfrom Bilinear Maps
 public class CLTest {
     // KeyGen
     final int messageSize = 5;
-    final KeyPair keyPair = CLSign.keyGen(messageSize);
-    final PublicKey pk = keyPair.getPk();
-    final SecretKey sk = keyPair.getSk();
+    final KeyPair keyPair1 = CLSign.keyGen(messageSize);
+    final PublicKey pk = keyPair1.getPk();
+    final SecretKey sk = keyPair1.getSk();
 
     // sign
-    //final int messageSize = 5;
-    //final KeyPair keyPair = CLSign.keyGen(messageSize);
-    final List<ZrElement> messages = IntStream.range(0, messageSize)
-            .mapToObj(i -> (ZrElement) keyPair.getPk().getPairing().getZr().newRandomElement().getImmutable())
+    final KeyPair keyPair2 = CLSign.keyGen(messageSize);
+    final List<ZrElement> messages2 = IntStream.range(0, messageSize)
+            .mapToObj(i -> (ZrElement) keyPair2.getPk().getPairing().getZr().newRandomElement().getImmutable())
             .collect(Collectors.toList());
-    final Signature sigma = CLSign.sign(messages, keyPair);
+    final Signature sigma2 = CLSign.sign(messages2, keyPair2);
 
     // verify
-   // final int messageSize = 5;
-   // final KeyPair keyPair = CLSign.keyGen(messageSize);
-   // final List<ZrElement> messages = IntStream.range(0, messageSize)
-            .mapToObj(i -> (ZrElement) keyPair.getPk().getPairing().getZr().newRandomElement().getImmutable())
+    final KeyPair keyPair3 = CLSign.keyGen(messageSize);
+    final List<ZrElement> messages3 = IntStream.range(0, messageSize)
+            .mapToObj(i -> (ZrElement) keyPair3.getPk().getPairing().getZr().newRandomElement().getImmutable())
             .collect(Collectors.toList());
-    //final Signature sigma = CLSign.sign(messages, keyPair);
+    final Signature sigma3 = CLSign.sign(messages3, keyPair3);
 
 }

@@ -4,7 +4,6 @@ import rubenesque.curves
 
 secp256r1 = rubenesque.curves.find('secp256r1')
 
-#from utils import *
 import utils
 #指数运算对应椭圆曲线乘法 g^r => g * r
 #乘法运算对应椭圆曲线加法 h^s*g^r => h*s + g*r
@@ -14,15 +13,12 @@ import utils
 #     # Prove knowledge of OR composition of 2 discrete logs, PoK(a or b): g1^a1 = P1 or g2^a2 = P2  or g3^a3 = P3 
 #     g1, g2, g3 = utils.get_generators(3)
 #     a1 = utils.get_random_value()
-#     #椭圆曲线上 故为乘法
 #     P1 = g1 * a1
 
 #     a2 = utils.get_random_value()
-#     #椭圆曲线上 故为乘法
 #     P2 = g2 * a2
 
 #     a3 = utils.get_random_value()
-#     #椭圆曲线上 故为乘法
 #     P3 = g3 * a3
    
     

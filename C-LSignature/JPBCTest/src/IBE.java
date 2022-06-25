@@ -140,7 +140,7 @@ public class IBE {
 
         String idBob = "bob@example.com";
         String idAlice = "alice@example.com";
-        String message = "i hate you";
+        String message = "testMsg";
 
         String dir = "data/";
         String pairingParametersFileName = "a.properties";
