@@ -10,6 +10,32 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Prover {
+    /*
+    * Prover’s input. The block of messages (m(0),...,m(l)) and
+    * signature σ = (a, {Ai}, b, {Bi}, c).
+    *
+    * Protocol. The prover does the following:
+    1. Compute a blinded version of his signature σ: Choose random r, r' ∈ Zq.
+    Form σ˜ = (a˜, {Ai˜}, b˜, {Bi˜}, c˜) as follows:
+    a˜ = a^r, ˜b = b^r and ˜c = c^r A˜i = Ai^r and B˜i = Bi^r
+    * for 1 ≤ i ≤ l
+    Further, blind c˜ to obtain a value c˜ that it is distributed independently
+    of everything else: cˆ = c˜^r'.
+    Send (a˜, {Ai˜}, b˜, {Bi˜}, cˆ) to the verifier.
+    2. Let vx, vxy, V(xy,i), i = 1,...,l, and vs be as follows:
+    vx = e(X, a˜) , vxy = e(X, b˜) , V(xy,i) = e(X, Bi˜) , vs = e(g, cˆ)
+    * The Prover and Verifier compute these values (locally) and then carry
+    out the following zero-knowledge proof protocol:
+    PK{(µ(0),...,µ(l), ρ):(vs)^ρ = vx * (vxy)^µ(0) * 累乘(i=1->i=l)[V(xy,i)^µ(i)]}
+
+    * The Verifier accepts if it accepts the proof above and:
+    * (a) {Ai˜} were formed correctly: e(a˜, Zi) = e(g, Ai˜);
+    * (b) b˜ and {Bi˜} were formed correctly:
+    *     e(a˜, Y) = e(g, b˜)
+    *     e(Ai˜, Y) = e(g, Bi˜)
+    * The protocol above is a zero knowledge proof of knowledge of a
+    signature σ on a block of messages (m(0),...,m(l)) under Signature Scheme D.
+    * */
     public static List<Element> computeProof(final List<Element> t, final List<ZrElement> messages, final Element challenge) {
         final List<Element> s = new ArrayList<>();
         for (int i = 0; i < t.size(); i++) {

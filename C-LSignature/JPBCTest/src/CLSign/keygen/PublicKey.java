@@ -29,8 +29,8 @@ import java.util.List;
 
 public class PublicKey {
     private Pairing pairing;
-    private Element generator;
-    private Element generatorT;
+    private Element generator;//G1
+    private Element generatorT;//GT
     private Element X;
     private Element Y;
     private List<Element> Z = new ArrayList<>();
