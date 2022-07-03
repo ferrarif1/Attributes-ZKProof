@@ -1,4 +1,4 @@
-package edu.jhu.isi.CLSign;
+package CLSign;
 
 import edu.jhu.isi.CLSign.keygen.KeyPair;
 import edu.jhu.isi.CLSign.keygen.PublicKey;
@@ -12,7 +12,7 @@ import org.junit.Test;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
+import static java.lang.System.out;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -30,10 +30,15 @@ public class CLTest {
 
     // sign
     final KeyPair keyPair2 = CLSign.keyGen(messageSize);
+    //messages2 -> Zr.newRandomElement
     final List<ZrElement> messages2 = IntStream.range(0, messageSize)
             .mapToObj(i -> (ZrElement) keyPair2.getPk().getPairing().getZr().newRandomElement().getImmutable())
             .collect(Collectors.toList());
     final Signature sigma2 = CLSign.sign(messages2, keyPair2);
+    ZrElement m0 = messages2.get(0);
+    System.out.println(m0);
+    //out.println("messages2: "+ sigma2);
+
 
     // verify
     final KeyPair keyPair3 = CLSign.keyGen(messageSize);
