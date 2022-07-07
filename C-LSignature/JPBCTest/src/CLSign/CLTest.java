@@ -1,5 +1,4 @@
-package CLSign;
-
+package edu.jhu.isi.CLSign;
 import edu.jhu.isi.CLSign.keygen.KeyPair;
 import edu.jhu.isi.CLSign.keygen.PublicKey;
 import edu.jhu.isi.CLSign.keygen.SecretKey;
@@ -36,7 +35,7 @@ public class CLTest {
             .collect(Collectors.toList());
     final Signature sigma2 = CLSign.sign(messages2, keyPair2);
     ZrElement m0 = messages2.get(0);
-    System.out.println(m0);
+    //System.out.println(messages2);
     //out.println("messages2: "+ sigma2);
 
 
