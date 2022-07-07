@@ -47,6 +47,7 @@ public class CLSignTest {
                 .mapToObj(i -> (ZrElement) keyPair.getPk().getPairing().getZr().newRandomElement().getImmutable())
                 .collect(Collectors.toList());
         final Signature sigma = CLSign.sign(messages, keyPair);
+        System.out.println(((ZrElement)messages.get(0)).value);
         assertNotNull(sigma.getA());
         assertNotNull(sigma.getB());
         assertNotNull(sigma.getC());
