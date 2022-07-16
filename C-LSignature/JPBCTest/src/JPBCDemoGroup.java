@@ -22,7 +22,7 @@ public class JPBCDemoGroup {
         Field Zr = bp.getZr();//Zr - 有限域
         Field GT = bp.getGT();
 
-        String m = "message";
+        String m = "Birthyear=1970";
         byte[] m_hash = Integer.toString(m.hashCode()).getBytes();
         //将byte[] m_hash哈希到Z_p群
         Element hash_Z_p = Zr.newElement().setFromHash(m_hash, 0, m_hash.length);
