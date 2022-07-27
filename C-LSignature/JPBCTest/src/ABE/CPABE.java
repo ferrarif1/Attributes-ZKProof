@@ -9,7 +9,14 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.lang.Integer.valueOf;
-
+/*
+* In KP-ABE, users' secret keys are generated based on an access tree that defines the
+* privileges scope of the concerned user, and
+* data are encrypted over a set of attribute.
+*
+* However, CP-ABE uses access trees to encrypt data and
+* users' secret keys are generated over a set of attribute.
+* */
 public class CPABE {
 
     public static void setup(String pairingParametersFileName, String pkFileName, String mskFileName) {
@@ -293,7 +300,7 @@ public class CPABE {
     }
 
     public static void basicTest() throws Exception {
-        int[] userAttList = {1, 2, 3};
+        int[] userAttList = {1, 2, 3, 4};
 
 //        Node[] accessTree = new Node[7];
 //        accessTree[0] = new Node(new int[]{2,3}, new int[]{1,2,3});
